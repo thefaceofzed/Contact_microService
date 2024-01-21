@@ -8,10 +8,10 @@ services:
   mysql:
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 
       MYSQL_DATABASE: calendrier_management
     ports:
-      - "3307:3306"
+      - "3307:3307"
     networks:
       - my-network
     volumes:
@@ -25,12 +25,14 @@ services:
     networks:
       - my-network
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/calendrier_management?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/calendrier_management?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_PASSWORD: 
       SERVER_PORT: 8091
       SPRING_APPLICATION_NAME: CALENDRIER-SERVICE
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      SPRING_DATASOURCE_JAKARTA_PERSISTENCE_JDBC_URL: jdbc:mysql://mysql:3307/calendrier_management?createDatabaseIfNotExist=true
     depends_on:
       - mysql
 
@@ -42,12 +44,14 @@ services:
     networks:
       - my-network
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/Categorie_management?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/Categorie_management?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_PASSWORD: 
       SERVER_PORT: 8089
       SPRING_APPLICATION_NAME: CATEGORIE-SERVICE
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      SPRING_DATASOURCE_JAKARTA_PERSISTENCE_JDBC_URL: jdbc:mysql://mysql:3307/Categorie_management?createDatabaseIfNotExist=true
     depends_on:
       - mysql
 
@@ -59,32 +63,16 @@ services:
     networks:
       - my-network
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/Contact_management?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/Contact_management?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_PASSWORD: 
       SERVER_PORT: 8086
       SPRING_APPLICATION_NAME: CONTACT-SERVICE
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      SPRING_DATASOURCE_JAKARTA_PERSISTENCE_JDBC_URL: jdbc:mysql://mysql:3307/Contact_management?createDatabaseIfNotExist=true
     depends_on:
       - mysql
-
-  eureka-server:
-    build:
-      context: ./Eureka_Server
-    ports:
-      - "8761:8761"
-    networks:
-      - my-network
-
-  gateway-service:
-    build:
-      context: ./GateWay
-    ports:
-      - "8888:8888"
-    networks:
-      - my-network
-    environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
 
   utilisateur-service:
     build:
@@ -94,12 +82,14 @@ services:
     networks:
       - my-network
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/users_management?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/users_management?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_PASSWORD: 
       SERVER_PORT: 8093
       SPRING_APPLICATION_NAME: SERVICE-USER
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      SPRING_DATASOURCE_JAKARTA_PERSISTENCE_JDBC_URL: jdbc:mysql://mysql:3307/users_management?createDatabaseIfNotExist=true
     depends_on:
       - mysql
 

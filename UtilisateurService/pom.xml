@@ -16,10 +16,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.0</spring-cloud.version>
-		<sonar.organization>elkhalfaoui-nahil</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.login>a3c0e2f44dd795293352df4b406ef610fbb66679</sonar.login>
-		<sonar.projectKey>elkhalfaoui-nahil_user</sonar.projectKey>
+		
 	</properties>
 	<dependencies>
 		<dependency>
@@ -78,15 +75,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>ma.emsi.UtilisateurService.UtilisateurServiceApplication</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
